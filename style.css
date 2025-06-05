@@ -1,0 +1,463 @@
+/* ===========================
+   Reset და საწყისი სტილები
+============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* ზომების მართვა უფრო მარტივად */
+}
+.logo {
+  text-decoration: none;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.1);
+  color: #ffcc00;
+}
+
+/* ===========================
+   მთელი გვერდის ფონური სტილი
+   - ძირითადი ფონი(background)
+   - ზედა ნაწილი ფონის გამოსახულებით (ფოტო)
+============================ */
+/* =======================
+   ArtGallery Animations
+========================= */
+.hero-header h1 {
+  font-size: 3rem;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 0;
+  animation: dropDown 3s ease-out forwards;
+  opacity: 0; /* დასაწყისში დამალულია */
+  transform: translateY(-50px); /* ზემოდან მოდის */
+}
+
+@keyframes dropDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  /* ფონის გამოსახულება (საიტის ქვედა ნაწილი) */
+  background: url('images/background.jpg') no-repeat bottom center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  /* მსუბუქი ლინეარული ფონი */
+  background-color: #e0d9d9;
+  background-blend-mode: lighten;
+  color: #fff; /* ყველა ტექსტი თეთრი ძირითადად */
+}
+
+/* ===========================
+   Header - ზემოთ ფოტო და მენიუ
+   - hero-header არის კონტეინერი
+   - ზედა ფოტოს გამოყენება როგორც background-image
+   - overlay შავი ფენის დასამატებლად ფონის გასანათებლად
+============================ */
+.hero-header {
+  position: relative;
+  height: 300px; /* სიგანე უფრო მაღალი შეიძლება იყოს */
+  background: url('images/michelanjelo.png') no-repeat center center;
+  background-size: cover;
+}
+
+/* დათვალიერების უკეთესობისთვის შავი ნახევარფანჯარა ფოტოზე */
+.overlay {
+  position: absolute;
+  inset: 0; /* ყველა მხრიდან 0 */
+  background-color: rgba(0, 0, 0, 0.55); /* ნახევრად გამჭვირვალე შავი ფერი */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+}
+
+/* ===========================
+   საიტის მთავარი სათაური
+   - თეთრი ფერი, დიდი ზომა
+============================ */
+.hero-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-weight: 700;
+}
+
+/* ===========================
+   ნავიგაციის სტილები
+   - nav არის ფლექს კონტეინერი
+   - მარცხენა მენიუ ხორუზონტალურად
+   - მარჯვენა მენიუ ვერტიკალურად
+============================ */
+nav {
+  display: flex;
+  justify-content: space-between; /* მარცხენა მენიუ მარცხნივ, მარჯვენა მენიუ მარჯვნივ */
+  align-items: center;
+}
+
+/* მარცხენა მენიუ: ჰორიზონტალურად */
+.menu-left {
+  list-style: none;
+  display: flex; /* ელემენტები გვერდიგვერდ */
+  gap: 1.5rem;  /* ელემენტებს შორის სივრცე */
+}
+
+/* მენიუს სტანდარტული სტილი */
+.menu-left li a,
+.menu-right li a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  padding: 8px 12px;
+}
+
+/* მენიუს hover ეფექტი */
+.menu-left li a:hover,
+.menu-right li a:hover {
+  transform: scale(1.2);
+  color: #ffcc00;
+}
+/* მარჯვენა მენიუ: ვერტიკალურად */
+.menu-right {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* ერთგვერდად ზემოთ-ქვემოთ */
+  gap: 0.6rem;
+  text-align: right;
+}
+
+/* მარჯვენა მენიუს ელემენტები */
+.menu-right li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* მარჯვენა მენიუს ჰოვერი */
+.menu-right li a:hover {
+  color: #ffd700; /* ოქროსფერი */
+}
+
+/* ===========================
+   მთავარი კონტენტი - ტექსტები
+============================ */
+main {
+  flex-grow: 1; /* მთავარი ნაწილი ფლექს კონტეინერში დაიკავებს თავისუფალ ადგილს */
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #222; /* ტექსტი შავი */
+  background-color: rgba(255, 255, 255, 0.85); /* ოდნავ გამჭვირვალე თეთრი ფონური */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* მთავარი კონტენტის სათაური */
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4a148c;
+}
+
+/* მთავარი კონტენტის პარა */
+main p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===========================
+   Footer - ბოლოში ფონი და ტექსტები
+============================ */
+footer {
+  background: #4a148c;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   პასუხი პატარა ეკრანებზე (მობილურები)
+============================ */
+@media (max-width: 768px) {
+
+  .hero-header {
+    height: 220px; /* მაღალი არა იყოს */
+  }
+
+  /* სათაური დაბალი ზომით */
+  .hero-header h1 {
+    font-size: 2rem;
+  }
+
+  /* nav-ს შიგნით მენიუები სტეკში მოექცეს */
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  /* მარცხენა მენიუ ჰორიზონტალურად რომ დარჩეს */
+  .menu-left {
+    gap: 1rem;
+  }
+
+  /* მარჯვენა მენიუ ვერტიკალურად, ცენტრირებული */
+  .menu-right {
+    flex-direction: row;
+    gap: 1rem;
+    text-align: center;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* ძალიან მცირე ეკრანებზე */
+@media (max-width: 400px) {
+  .hero-header h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  nav {
+    gap: 0.5rem;
+  }
+
+  .menu-left {
+    gap: 0.8rem;
+  }
+
+  .menu-right {
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+  }
+}
+/*gallery ის თვის მოდიფიკაციები*/
+/* გალერეის კონტეინერი იყენებს CSS Grid ლეიაუტს */
+.gallery-grid {
+  display: grid; /* გააქტიურდეს grid */
+  grid-template-columns: repeat(4, 1fr); /* 4 სვეტი, თითოეულს 1 ფრაქცია ფართობი */
+  gap: 1rem; /* სვეტებსა და ხაზებს შორის დაშორება */
+}
+
+/* თითოეული ნახატის ბლოკის სტილი */
+.gallery-item {
+  overflow: hidden; /* ამოიჭრება ზედმეტი, რომელიც გამოსცდება */
+  border-radius: 8px; /* რბილი კუთხეები */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5); /* ჩრდილი ბლოკს */
+  background: #444; /* ბლოკის ფონი */
+  transition: transform 0.3s ease; /* გარდაქმნის ეფექტი (მაგ: გაზრდა) */
+}
+
+/* მაუსის მიყვანისას ნახატი ოდნავ იზრდება */
+.gallery-item:hover {
+  transform: scale(1.05); /* 5%-ით გაზრდა */
+  z-index: 1; /* ადის წინ */
+}
+
+/* სურათის სტილი */
+.gallery-item img {
+  width: 100%; /* სიგანე სრულიად */
+  height: 180px; /* ფიქსირებული სიმაღლე */
+  object-fit: cover; /* სურათი სრული მოცულობით მოერგოს, გაწევით, არა დეფორმაციით */
+  display: block; /* ზედმეტი სივრცის ამოღება */
+  border-radius: 8px 8px 0 0; /* მხოლოდ ზედა ორი კუთხე არის რბილი */
+}
+
+/* ტექსტი სურათის ქვეშ */
+.gallery-item p {
+  padding: 0.5rem; /* შიდა ბრტყელი */
+  font-size: 1rem; /* ზომა */
+  color: #eee; /* ტექსტის ფერი */
+  text-align: center; /* ცენტრირება */
+  margin: 0; /* გარეშე ზედმეტი მანძილი */
+}
+
+/* რეზპონსივისთვის - ეკრანის სიგანის მიხედვით სვეტების რაოდენობა იკლებს */
+
+/* 1200px ქვემოთ ეკრანზე გვინდა 3 სვეტი */
+@media (max-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 768px ქვემოთ 2 სვეტი */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* მობილურისთვის, 480px ქვემოთ - 1 სვეტი */
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Lightbox ფონი და პოზიციონირება */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Lightbox სურათი */
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+/* დახურვის ღილაკი */
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  z-index: 10000;
+}
+/* გვერდების გადამრთველის გარე კონტეინერი — ცენტრში განლაგება და ზემოდან/ქვემოდან სივრცე */
+.pagination {
+  text-align: center;         /* ტექსტი და ელემენტები ცენტრში */
+  margin: 20px 0;             /* ზემოდან და ქვემოდან 20px მოშორება */
+}
+
+/* თითოეული ბმული (გვერდის ღილაკი) */
+.pagination a {
+  display: inline-block;      /* რომ მიიღოს ზომა შიგთავსის მიხედვით */
+  padding: 8px 12px;          /* შიდა სივრცე ღილაკის შიგნით */
+  margin: 0 4px;              /* მარჯვენა და მარცხენა სივრცე ღილაკებს შორის */
+  background-color: #444;     /* ღილაკის მუქი ფონი */
+  color: white;               /* ტექსტის ფერი */
+  text-decoration: none;      /* ბმულის ქვედა ხაზი ამოიღე */
+  border-radius: 4px;         /* მოღუნული კუთხეები */
+  transition: background 0.3s; /* ფონის ცვლილება გამარტივებული ანიმაციით */
+}
+
+/* როდესაც მაუსით გადავდივართ ღილაკზე */
+.pagination a:hover {
+  background-color: #666;     /* ღილაკის უფრო ღია ფონი hover-ისას */
+}
+
+/* აქტიური გვერდის ღილაკი (მიმდინარე გვერდი) */
+.pagination a.active {
+  background-color: #fff;     /* თეთრი ფონი */
+  color: #000;                /* შავი ტექსტი */
+  font-weight: bold;          /* სქელი ტექსტი */
+}
+.add-to-cart, .buy-now {
+  margin: 4px 2px;
+  padding: 6px 12px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-to-cart:hover, .buy-now:hover {
+  background-color: #666;
+}
+.intro {
+  background: linear-gradient(to right, #ffe0dc, #f5e6ff);
+  text-align: center;
+  padding: 80px 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.intro h2 {
+  font-size: 2.5rem;
+  color: #3c2a4d;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.explore-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: hsl(320, 70%, 40%);
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.explore-btn:hover {
+  background-color: rgba(180, 30, 90, 0.9);
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* textarea-ს სტილი */
+#message {
+    width: 100%;         /* სრულად იკავებს კონტეინერს */
+    min-height: 200px;   
+    font-size: 18px;     
+    padding: 10px;  
+    margin-top: 10px;    /* ზედა დაშორება, რომ სხვა ელემენტიდან დაშორებული იყოს */
+    resize: vertical;    /* მომხმარებელს შეუძლია შეცვალოს textarea-ს სიმაღლე */
+    box-sizing: border-box; /* ზუსტი ზომა, რომ padding-იც ჩათვალოს */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: 'Arial', sans-serif;
+}
+
+/* თუ გინდა, რომ ყველა ლეიბლი და textarea-ს შორის მეტი დაშორება იყოს */
+form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: 600;
+}
+input[type="file"] {
+    margin-top: 15px;
+    font-size: 16px;
+}
